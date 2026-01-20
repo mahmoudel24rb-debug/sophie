@@ -128,6 +128,11 @@ function updateHeroScroll() {
 function updateParallaxImages() {
     if (!heroSection) return;
 
+    // MOUVEMENT GLOBAL DE LA GRID (comme dans le template)
+    // La grid entière bouge avec la souris (direction opposée = effet de profondeur)
+    const gridGlobalX = -smoothMouseX * 10; // Négatif = direction opposée
+    const gridGlobalY = -smoothMouseY * 6;  // Moins de mouvement en Y
+
     // Grid offset basé sur le scroll
     const gridXBase = lerp(-20, -19, scrollProgress);
     const gridYBase = lerp(9, 0.4, scrollProgress);
@@ -138,10 +143,14 @@ function updateParallaxImages() {
         const parallaxX = parseFloat(img.dataset.px);
         const parallaxY = parseFloat(img.dataset.py);
 
-        // AUGMENTER L'INTENSITÉ du parallax souris (x5 pour effet bien visible)
-        const parallaxIntensity = 5;
-        const finalX = baseX + gridXBase + (smoothMouseX * parallaxX * parallaxIntensity);
-        const finalY = baseY + gridYBase + (smoothMouseY * parallaxY * parallaxIntensity);
+        // MOUVEMENT INDIVIDUEL de l'image (en plus du mouvement de la grid)
+        // Seulement si data-px et data-py ne sont pas 0
+        const individualX = parallaxX !== 0 ? smoothMouseX * parallaxX : 0;
+        const individualY = parallaxY !== 0 ? smoothMouseY * parallaxY : 0;
+
+        // COMBINAISON: position de base + grid scroll + grid parallax + parallax individuel
+        const finalX = baseX + gridXBase + gridGlobalX + individualX;
+        const finalY = baseY + gridYBase + gridGlobalY + individualY;
 
         img.style.left = `calc(50% + ${finalX}vw)`;
         img.style.top = `calc(50% + ${finalY}vh)`;
