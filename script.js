@@ -67,6 +67,9 @@ function mapValue(value, inMin, inMax, outMin, outMax) {
     return outMin + (outMax - outMin) * ((value - inMin) / (inMax - inMin));
 }
 
+// Variables pour le scroll progress
+let scrollProgress = 0;
+
 // Animation au scroll
 function updateHeroScroll() {
     if (!heroSection) return;
@@ -76,48 +79,30 @@ function updateHeroScroll() {
     const windowHeight = window.innerHeight;
 
     // Progress de 0 à 1 pendant tout le scroll de la section
-    const progress = Math.max(0, Math.min(1, -rect.top / (sectionHeight - windowHeight)));
+    scrollProgress = Math.max(0, Math.min(1, -rect.top / (sectionHeight - windowHeight)));
 
     // === ANIMATIONS IMAGES ===
     // Valeurs basées sur le template original
-    const imgOpacity = lerp(1, 0.39, progress * 1.5); // Plus rapide fade out
-    const imgBlur = lerp(0, 18.4, progress * 1.5);
-    const imgScale = lerp(1, 1.18, progress);
-    const imgYPercent = lerp(0, -153, progress);
+    const imgOpacity = lerp(1, 0.39, scrollProgress * 1.5); // Plus rapide fade out
+    const imgBlur = lerp(0, 18.4, scrollProgress * 1.5);
+    const imgScale = lerp(1, 1.18, scrollProgress);
+    const imgYPercent = lerp(0, -153, scrollProgress);
 
     heroImages.style.opacity = imgOpacity;
     heroImages.style.filter = `blur(${imgBlur}px)`;
     heroImages.style.transform = `scale(${imgScale}) translateY(${imgYPercent}%)`;
 
-    // === PARALLAX DES IMAGES INDIVIDUELLES ===
-    const gridXBase = lerp(-20, -19, progress);
-    const gridYBase = lerp(9, 0.4, progress);
-
-    heroImgs.forEach(img => {
-        const baseX = parseFloat(img.dataset.x);
-        const baseY = parseFloat(img.dataset.y);
-        const parallaxX = parseFloat(img.dataset.px);
-        const parallaxY = parseFloat(img.dataset.py);
-
-        // Combiner grid offset + parallax souris
-        const finalX = baseX + gridXBase + smoothMouseX * parallaxX;
-        const finalY = baseY + gridYBase + smoothMouseY * parallaxY;
-
-        img.style.left = `calc(50% + ${finalX}vw)`;
-        img.style.top = `calc(50% + ${finalY}vh)`;
-    });
-
     // === TEXTE / CTA REVEAL ===
     // Apparaît progressivement après 5% de scroll
-    if (progress < 0.05) {
+    if (scrollProgress < 0.05) {
         heroText.style.height = '0px';
         heroText.style.opacity = '0';
-    } else if (progress < 0.17) {
-        const textProgress = mapValue(progress, 0.05, 0.17, 0, 1);
+    } else if (scrollProgress < 0.17) {
+        const textProgress = mapValue(scrollProgress, 0.05, 0.17, 0, 1);
         heroText.style.height = `${lerp(0, 96, textProgress)}px`;
         heroText.style.opacity = `${lerp(0, 0.35, textProgress)}`;
-    } else if (progress < 0.3) {
-        const textProgress = mapValue(progress, 0.17, 0.3, 0, 1);
+    } else if (scrollProgress < 0.3) {
+        const textProgress = mapValue(scrollProgress, 0.17, 0.3, 0, 1);
         heroText.style.height = `${lerp(96, 200, textProgress)}px`;
         heroText.style.opacity = `${lerp(0.35, 1, textProgress)}`;
     } else {
@@ -127,15 +112,46 @@ function updateHeroScroll() {
 
     // === SCROLL INDICATOR ===
     // Fade out entre 40% et 55%
-    if (progress < 0.4) {
+    if (scrollProgress < 0.4) {
         scrollIndicator.style.opacity = '1';
-    } else if (progress < 0.55) {
-        const indicatorProgress = mapValue(progress, 0.4, 0.55, 0, 1);
+    } else if (scrollProgress < 0.55) {
+        const indicatorProgress = mapValue(scrollProgress, 0.4, 0.55, 0, 1);
         scrollIndicator.style.opacity = `${lerp(1, 0, indicatorProgress)}`;
     } else {
         scrollIndicator.style.opacity = '0';
     }
 }
+
+// ========================================
+// PARALLAX IMAGES - Animation Continue
+// ========================================
+function updateParallaxImages() {
+    if (!heroSection) return;
+
+    // Grid offset basé sur le scroll
+    const gridXBase = lerp(-20, -19, scrollProgress);
+    const gridYBase = lerp(9, 0.4, scrollProgress);
+
+    heroImgs.forEach(img => {
+        const baseX = parseFloat(img.dataset.x);
+        const baseY = parseFloat(img.dataset.y);
+        const parallaxX = parseFloat(img.dataset.px);
+        const parallaxY = parseFloat(img.dataset.py);
+
+        // Combiner grid offset + parallax souris smooth
+        const finalX = baseX + gridXBase + smoothMouseX * parallaxX;
+        const finalY = baseY + gridYBase + smoothMouseY * parallaxY;
+
+        img.style.left = `calc(50% + ${finalX}vw)`;
+        img.style.top = `calc(50% + ${finalY}vh)`;
+    });
+
+    // Boucle d'animation continue
+    requestAnimationFrame(updateParallaxImages);
+}
+
+// Démarrer l'animation parallax en continu
+updateParallaxImages();
 
 // Throttle scroll pour performance
 let ticking = false;
