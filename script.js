@@ -130,8 +130,8 @@ function updateParallaxImages() {
 
     // MOUVEMENT GLOBAL DE LA GRID (comme dans le template)
     // La grid entière bouge avec la souris (direction opposée = effet de profondeur)
-    const gridGlobalX = -smoothMouseX * 10; // Négatif = direction opposée
-    const gridGlobalY = -smoothMouseY * 6;  // Moins de mouvement en Y
+    const gridGlobalX = -smoothMouseX * 5; // Négatif = direction opposée
+    const gridGlobalY = -smoothMouseY * 3;  // Moins de mouvement en Y
 
     // Grid offset basé sur le scroll
     const gridXBase = lerp(-20, -19, scrollProgress);
