@@ -223,9 +223,9 @@ body {
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    height: 0;
+    width: 0;
     opacity: 0;
-    transition: height 0.3s ease-out, opacity 0.3s ease-out;
+    transition: width 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .heading-hero {
@@ -301,11 +301,35 @@ body {
     transition: all 0.4s cubic-bezier(.25, .46, .45, .94);
     font-family: 'Cormorant Garamond', serif;
     display: inline-block;
+    position: relative;
+    z-index: 201;
 }
 
 .button:hover {
     box-shadow: inset 0 0 0 40px var(--light);
     color: var(--dark);
+}
+
+/* Overlay qui apparaît au hover du bouton */
+.button:hover::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(26, 26, 26, 0.6);
+    z-index: -1;
+    animation: overlayFadeIn 0.3s ease-out;
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Images Hero */

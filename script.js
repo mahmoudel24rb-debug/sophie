@@ -93,20 +93,20 @@ function updateHeroScroll() {
     heroImages.style.transform = `scale(${imgScale}) translateY(${imgYPercent}%)`;
 
     // === TEXTE / CTA REVEAL ===
-    // Apparaît progressivement après 5% de scroll
+    // Apparaît progressivement après 5% de scroll (largeur au lieu de hauteur)
     if (scrollProgress < 0.05) {
-        heroText.style.height = '0px';
+        heroText.style.width = '0px';
         heroText.style.opacity = '0';
     } else if (scrollProgress < 0.17) {
         const textProgress = mapValue(scrollProgress, 0.05, 0.17, 0, 1);
-        heroText.style.height = `${lerp(0, 96, textProgress)}px`;
-        heroText.style.opacity = `${lerp(0, 0.35, textProgress)}`;
+        heroText.style.width = `${lerp(0, 300, textProgress)}px`;
+        heroText.style.opacity = `${lerp(0, 0.5, textProgress)}`;
     } else if (scrollProgress < 0.3) {
         const textProgress = mapValue(scrollProgress, 0.17, 0.3, 0, 1);
-        heroText.style.height = `${lerp(96, 200, textProgress)}px`;
-        heroText.style.opacity = `${lerp(0.35, 1, textProgress)}`;
+        heroText.style.width = `${lerp(300, 490, textProgress)}px`;
+        heroText.style.opacity = `${lerp(0.5, 1, textProgress)}`;
     } else {
-        heroText.style.height = '200px';
+        heroText.style.width = '490px';
         heroText.style.opacity = '1';
     }
 
