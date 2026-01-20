@@ -467,13 +467,17 @@ function HeroImage({
     // Combiner position de base + grid offset + parallax souris
     const finalX = useTransform(
         [gridXBase, gridXMouse, mouseXSpring],
-        ([gx, gxm, mx]: [number, number, number]) =>
-            `calc(50% + ${baseX}vw + ${gx + gxm}vw + ${mx * parallaxX}vw)`
+        (values: number[]) => {
+            const [gx, gxm, mx] = values
+            return `calc(50% + ${baseX}vw + ${gx + gxm}vw + ${mx * parallaxX}vw)`
+        }
     )
     const finalY = useTransform(
         [gridYBase, gridYMouse, mouseYSpring],
-        ([gy, gym, my]: [number, number, number]) =>
-            `calc(50% + ${baseY}vh + ${gy + gym}vw + ${my * parallaxY}vw)`
+        (values: number[]) => {
+            const [gy, gym, my] = values
+            return `calc(50% + ${baseY}vh + ${gy + gym}vw + ${my * parallaxY}vw)`
+        }
     )
 
     return (
