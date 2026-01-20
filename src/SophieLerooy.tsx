@@ -467,12 +467,12 @@ function HeroImage({
     // Combiner position de base + grid offset + parallax souris
     const finalX = useTransform(
         [gridXBase, gridXMouse, mouseXSpring],
-        ([gx, gxm, mx]) =>
+        ([gx, gxm, mx]: [number, number, number]) =>
             `calc(50% + ${baseX}vw + ${gx + gxm}vw + ${mx * parallaxX}vw)`
     )
     const finalY = useTransform(
         [gridYBase, gridYMouse, mouseYSpring],
-        ([gy, gym, my]) =>
+        ([gy, gym, my]: [number, number, number]) =>
             `calc(50% + ${baseY}vh + ${gy + gym}vw + ${my * parallaxY}vw)`
     )
 
@@ -503,7 +503,7 @@ interface ProjectItemProps {
     isRight: boolean
 }
 
-function ProjectItem({ project, index, isRight }: ProjectItemProps) {
+function ProjectItem({ project, isRight }: ProjectItemProps) {
     const ref = useRef(null)
     const [isInView, setIsInView] = useState(false)
     useEffect(() => {
