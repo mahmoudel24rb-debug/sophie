@@ -138,9 +138,10 @@ function updateParallaxImages() {
         const parallaxX = parseFloat(img.dataset.px);
         const parallaxY = parseFloat(img.dataset.py);
 
-        // Combiner grid offset + parallax souris smooth
-        const finalX = baseX + gridXBase + smoothMouseX * parallaxX;
-        const finalY = baseY + gridYBase + smoothMouseY * parallaxY;
+        // AUGMENTER L'INTENSITÉ du parallax souris (x3 pour être plus visible)
+        const parallaxIntensity = 3;
+        const finalX = baseX + gridXBase + (smoothMouseX * parallaxX * parallaxIntensity);
+        const finalY = baseY + gridYBase + (smoothMouseY * parallaxY * parallaxIntensity);
 
         img.style.left = `calc(50% + ${finalX}vw)`;
         img.style.top = `calc(50% + ${finalY}vh)`;
