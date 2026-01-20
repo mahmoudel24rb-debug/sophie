@@ -318,12 +318,21 @@ body {
 
 .hero-img {
     position: absolute;
-    width: 18vw;
+    width: 20vw;
     max-width: none;
     will-change: transform;
     object-fit: cover;
     transform: translate(-50%, -50%);
 }
+
+/* Variations de tailles pour plus de dynamisme */
+.hero-img:nth-child(1) { width: 22vw; }
+.hero-img:nth-child(3) { width: 24vw; }
+.hero-img:nth-child(5) { width: 18vw; }
+.hero-img:nth-child(7) { width: 21vw; }
+.hero-img:nth-child(8) { width: 19vw; }
+.hero-img:nth-child(10) { width: 23vw; }
+.hero-img:nth-child(11) { width: 17vw; }
 
 /* Scroll Indicator */
 .scroll {

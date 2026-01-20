@@ -138,8 +138,8 @@ function updateParallaxImages() {
         const parallaxX = parseFloat(img.dataset.px);
         const parallaxY = parseFloat(img.dataset.py);
 
-        // AUGMENTER L'INTENSITÉ du parallax souris (x3 pour être plus visible)
-        const parallaxIntensity = 3;
+        // AUGMENTER L'INTENSITÉ du parallax souris (x5 pour effet bien visible)
+        const parallaxIntensity = 5;
         const finalX = baseX + gridXBase + (smoothMouseX * parallaxX * parallaxIntensity);
         const finalY = baseY + gridYBase + (smoothMouseY * parallaxY * parallaxIntensity);
 
