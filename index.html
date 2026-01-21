@@ -1,227 +1,427 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sophie Lerooy - Artiste sculpteur avec expertise en design organique et art contemporain">
+    <meta charset="utf-8">
     <title>Sophie Lerooy - Artiste Sculpteur</title>
+    <meta name="description" content="Sophie Lerooy - Artiste sculpteur avec expertise en design organique et art contemporain">
+    <meta property="og:title" content="Sophie Lerooy - Artiste Sculpteur">
+    <meta property="og:description" content="Sophie Lerooy - Artiste sculpteur avec expertise en design organique et art contemporain">
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/c91043fe-12b3-4862-8f45-cc43496f10f0/sl+4+blanc+sand+fond.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sophie Lerooy - Artiste Sculpteur">
+    <meta name="twitter:description" content="Sophie Lerooy - Artiste sculpteur avec expertise en design organique et art contemporain">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Webflow CSS -->
+    <link href="https://cdn.prod.website-files.com/69395b2ee93d65c41bb07bca/css/artivo-collection.webflow.shared.507996197.min.css" rel="stylesheet" type="text/css">
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic%7CInter:100,200,300,regular,500,600,700,800,900%7CCormorant+Garamond:300,regular,500,600,700%7CGrey+Qo:regular" media="all">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Lenis Smooth Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@latest/dist/lenis.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand-logo {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .cta-button {
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .hero-bg-image.active {
+            opacity: 0.4;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .hero-text-top {
+            margin-bottom: 1rem;
+        }
+
+        .hero-text-top h2 {
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .hero-text-bottom {
+            margin-top: 2rem;
+        }
+
+        .hero-text-bottom h1 {
+            font-size: clamp(3rem, 12vw, 9rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .hero-cta {
+            margin-top: 3rem;
+        }
+
+        .hero-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-button:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 1.5rem;
+            }
+
+            .header-brand-logo {
+                height: 40px;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-text-top h2 {
+                font-size: clamp(1.5rem, 6vw, 3rem);
+            }
+
+            .hero-text-bottom h1 {
+                font-size: clamp(2rem, 10vw, 5rem);
+            }
+
+            .hero-button {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* GSAP Split Text */
+        .gsap_split_word {
+            display: inline-block;
+            position: relative;
+        }
+
+        .gsap_split_letter {
+            display: inline-block;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="logo">
-                <span class="logo-text">SOPHIE</span>
-                <span class="logo-accent">Lerooy</span>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <a href="/" class="header-brand">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/c91043fe-12b3-4862-8f45-cc43496f10f0/sl+4+blanc+sand+fond.png"
+                     loading="lazy"
+                     alt="Sophie Lerooy Logo"
+                     class="header-brand-logo">
             </a>
-            <button class="menu-button" id="menuButton" aria-label="Menu">
-                <div class="menu-icon">
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                </div>
-            </button>
-        </div>
+            <a href="mailto:contact@sophielerooy.com" class="cta-button">Contact</a>
+        </header>
 
-        <!-- Menu Overlay -->
-        <div class="nav-menu" id="navMenu">
-            <div class="nav-links">
-                <div class="nav-overflow">
-                    <a href="#accueil" class="nav-link">Accueil</a>
-                </div>
-                <div class="nav-overflow">
-                    <a href="#galerie" class="nav-link">Galerie</a>
-                </div>
-                <div class="nav-overflow">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                <div class="nav-overflow">
-                    <a href="#apropos" class="nav-link">À propos</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="nav-gradient"></div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section class="section-hero" id="heroSection">
-        <div class="hero-sticky">
-            <!-- Texte centré -->
-            <div class="block-hero">
-                <div class="hero-overflow-a">
-                    <h1 class="heading-hero">SOPHIE</h1>
-                </div>
-                <div class="hero-overflow-b">
-                    <h1 class="heading-hero-accent">LEROOY</h1>
-                </div>
-                <div class="hero-overflow-c" id="heroText">
-                    <div class="line-hero">
-                        <div class="line-light"></div>
-                    </div>
-                    <h5 class="paragraph-hero">
-                        ARTISTE SCULPTEUR AVEC EXPERTISE EN
-                        <span class="text-accent">DESIGN ORGANIQUE</span>
-                        ET
-                        <span class="text-accent">ART CONTEMPORAIN.</span>
-                    </h5>
-                    <a href="#galerie" class="button">Découvrir mes œuvres</a>
-                </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/b26053e3-1b76-4757-b90b-5e73ba9f773a/IMG_5336.jpg" class="hero-bg-image active" alt="Sculpture 1">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/4bf71508-605f-4c11-8166-9a6e6d01ae1c/IMG_5335.jpg" class="hero-bg-image" alt="Sculpture 2">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/07200a28-bb18-4db9-bbc9-95bcaa5918de/IMG_5340.jpg" class="hero-bg-image" alt="Sculpture 3">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/9d7cacf5-f524-4856-b0e8-34faeefd2fd3/IMG_0502.jpg" class="hero-bg-image" alt="Sculpture 4">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/2736d987-aafd-453f-8a36-ed255c889911/IMG_0503.jpg" class="hero-bg-image" alt="Sculpture 5">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/6f5de855-aaa4-4f53-b673-5e9e236a937e/RACHEL+1.jpg" class="hero-bg-image" alt="Sculpture 6">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/f274e63d-c4ee-4774-9d9f-5d3e49bbdd1a/Rachel.jpg" class="hero-bg-image" alt="Sculpture 7">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/108dfc22-5861-4714-865c-51e1056e2e81/RACHEL+2.jpg" class="hero-bg-image" alt="Sculpture 8">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/e0e9bf97-26bf-42ce-a3ed-2d889aab5f6f/IMG_0504.jpg" class="hero-bg-image" alt="Sculpture 9">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/ccff88b1-98d4-480c-af1a-2706f8085a84/IMG_5290.jpg" class="hero-bg-image" alt="Sculpture 10">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/490ca1ce-a7a3-44f2-825d-ac61d6da4eb9/IMG_5292.jpg" class="hero-bg-image" alt="Sculpture 11">
+                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/65a65d86-7e89-4e6b-8552-97aee3a91e16/MIKA+photo+courte+-+Copie+version+carre.jpg" class="hero-bg-image" alt="Sculpture 12">
+                <div class="hero-gradient"></div>
             </div>
 
-            <!-- Images avec positionnement absolu - Positions plus étalées comme template -->
-            <div class="block-img-hero" id="heroImages">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/b26053e3-1b76-4757-b90b-5e73ba9f773a/IMG_5336.jpg" alt="" class="hero-img" data-x="-65" data-y="-40" data-px="1" data-py="-0.5">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/4bf71508-605f-4c11-8166-9a6e6d01ae1c/IMG_5335.jpg" alt="" class="hero-img" data-x="-65" data-y="35" data-px="0" data-py="0">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/07200a28-bb18-4db9-bbc9-95bcaa5918de/IMG_5340.jpg" alt="" class="hero-img" data-x="-25" data-y="-45" data-px="2" data-py="-1">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/9d7cacf5-f524-4856-b0e8-34faeefd2fd3/IMG_0502.jpg" alt="" class="hero-img" data-x="-25" data-y="30" data-px="0" data-py="0">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/2736d987-aafd-453f-8a36-ed255c889911/IMG_0503.jpg" alt="" class="hero-img" data-x="25" data-y="-48" data-px="-4" data-py="2">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/6f5de855-aaa4-4f53-b673-5e9e236a937e/RACHEL+1.jpg" alt="" class="hero-img" data-x="25" data-y="38" data-px="-2" data-py="1">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/f274e63d-c4ee-4774-9d9f-5d3e49bbdd1a/Rachel.jpg" alt="" class="hero-img" data-x="65" data-y="-50" data-px="-2" data-py="1">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/108dfc22-5861-4714-865c-51e1056e2e81/RACHEL+2.jpg" alt="" class="hero-img" data-x="65" data-y="25" data-px="-5" data-py="2.5">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/e0e9bf97-26bf-42ce-a3ed-2d889aab5f6f/IMG_0504.jpg" alt="" class="hero-img" data-x="-75" data-y="-8" data-px="0" data-py="0">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/ccff88b1-98d4-480c-af1a-2706f8085a84/IMG_5290.jpg" alt="" class="hero-img" data-x="-35" data-y="8" data-px="2" data-py="-1">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/490ca1ce-a7a3-44f2-825d-ac61d6da4eb9/IMG_5292.jpg" alt="" class="hero-img" data-x="35" data-y="-12" data-px="-3" data-py="1.5">
-                <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/65a65d86-7e89-4e6b-8552-97aee3a91e16/MIKA+photo+courte+-+Copie+version+carre.jpg" alt="" class="hero-img" data-x="75" data-y="10" data-px="0" data-py="0">
-            </div>
-
-            <!-- Scroll indicator -->
-            <div class="scroll" id="scrollIndicator">
-                <div class="scroll-line">
-                    <div class="scroll-line-light"></div>
+            <div class="hero-content">
+                <div class="hero-text-top">
+                    <h2 class="hero-title-small">Découvrir</h2>
                 </div>
-                <span class="text-scroll">SCROLL</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJETS -->
-    <section id="galerie" class="section">
-        <div class="content">
-            <!-- Projet 1 -->
-            <div class="collection-item" data-align="left">
-                <div class="project">
-                    <a href="#" class="link-image-project">
-                        <div class="block-image-project">
-                            <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/b26053e3-1b76-4757-b90b-5e73ba9f773a/IMG_5336.jpg" alt="Sculpture Abstraite I" class="image-project">
-                        </div>
+                <div class="hero-text-bottom">
+                    <h1 class="hero-title-large">L'Art Intemporel</h1>
+                </div>
+                <div class="hero-cta">
+                    <a href="mailto:contact@sophielerooy.com" class="hero-button">
+                        Découvrir la Galerie
                     </a>
-                    <div class="project-info">
-                        <h5 class="heading-project">Sculpture Abstraite I</h5>
-                        <p class="heading-info">Sophie Lerooy</p>
-                    </div>
                 </div>
             </div>
+        </section>
+    </div>
 
-            <!-- Projet 2 -->
-            <div class="collection-item" data-align="right">
-                <div class="project">
-                    <a href="#" class="link-image-project">
-                        <div class="block-image-project">
-                            <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/07200a28-bb18-4db9-bbc9-95bcaa5918de/IMG_5340.jpg" alt="Forme Organique" class="image-project">
-                        </div>
-                    </a>
-                    <div class="project-info">
-                        <h5 class="heading-project">Forme Organique</h5>
-                        <p class="heading-info">Sophie Lerooy</p>
-                    </div>
-                </div>
-            </div>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-            <!-- Projet 3 -->
-            <div class="collection-item" data-align="left">
-                <div class="project">
-                    <a href="#" class="link-image-project">
-                        <div class="block-image-project">
-                            <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/6f5de855-aaa4-4f53-b673-5e9e236a937e/RACHEL+1.jpg" alt="Rachel" class="image-project">
-                        </div>
-                    </a>
-                    <div class="project-info">
-                        <h5 class="heading-project">Rachel</h5>
-                        <p class="heading-info">Sophie Lerooy</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@latest/dist/lenis.min.js"></script>
 
-            <!-- Projet 4 -->
-            <div class="collection-item" data-align="right">
-                <div class="project">
-                    <a href="#" class="link-image-project">
-                        <div class="block-image-project">
-                            <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/2736d987-aafd-453f-8a36-ed255c889911/IMG_0503.jpg" alt="Composition II" class="image-project">
-                        </div>
-                    </a>
-                    <div class="project-info">
-                        <h5 class="heading-project">Composition II</h5>
-                        <p class="heading-info">Sophie Lerooy</p>
-                    </div>
-                </div>
-            </div>
+    <script>
+        // Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+        });
 
-            <!-- Projet 5 -->
-            <div class="collection-item" data-align="left">
-                <div class="project">
-                    <a href="#" class="link-image-project">
-                        <div class="block-image-project">
-                            <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/ccff88b1-98d4-480c-af1a-2706f8085a84/IMG_5290.jpg" alt="Série Blanche" class="image-project">
-                        </div>
-                    </a>
-                    <div class="project-info">
-                        <h5 class="heading-project">Série Blanche</h5>
-                        <p class="heading-info">Sophie Lerooy</p>
-                    </div>
-                </div>
-            </div>
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
 
-            <!-- Projet 6 -->
-            <div class="collection-item" data-align="right">
-                <div class="project">
-                    <a href="#" class="link-image-project">
-                        <div class="block-image-project">
-                            <img src="https://images.squarespace-cdn.com/content/v1/641eca46d495e35ab9135e80/65a65d86-7e89-4e6b-8552-97aee3a91e16/MIKA+photo+courte+-+Copie+version+carre.jpg" alt="Mika" class="image-project">
-                        </div>
-                    </a>
-                    <div class="project-info">
-                        <h5 class="heading-project">Mika</h5>
-                        <p class="heading-info">Sophie Lerooy</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        // Image Rotation
+        const images = document.querySelectorAll('.hero-bg-image');
+        let currentIndex = 0;
 
-    <!-- CTA -->
-    <section class="section-cta">
-        <div class="cta-content">
-            <h2 class="heading-cta">
-                Prêt à découvrir
-                <span class="text-accent">votre prochaine œuvre ?</span>
-            </h2>
-            <div class="line-hero">
-                <div class="line-light"></div>
-            </div>
-            <a href="#contact" class="button">Me contacter</a>
-        </div>
-    </section>
+        function rotateImages() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
 
-    <!-- FOOTER -->
-    <footer class="section-footer">
-        <div class="footer">
-            <a href="https://sophielerooy.com" class="footer-link">sophielerooy.com</a>
-            <a href="#" class="footer-link">Instagram</a>
-        </div>
-        <div class="footer">
-            <span class="footer-link">© 2024 Sophie Lerooy</span>
-        </div>
-    </footer>
+        setInterval(rotateImages, 4000);
 
-    <script src="script.js"></script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Split text animation helper
+        function splitText(element) {
+            const text = element.textContent;
+            element.innerHTML = '';
+
+            const words = text.split(' ');
+            words.forEach((word, wordIndex) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'gsap_split_word';
+                wordSpan.style.display = 'inline-block';
+                wordSpan.style.marginRight = '0.3em';
+
+                const letters = word.split('');
+                letters.forEach((letter, letterIndex) => {
+                    const letterSpan = document.createElement('span');
+                    letterSpan.className = 'gsap_split_letter';
+                    letterSpan.textContent = letter;
+                    letterSpan.style.display = 'inline-block';
+                    wordSpan.appendChild(letterSpan);
+                });
+
+                element.appendChild(wordSpan);
+            });
+        }
+
+        // Apply split text
+        const heroTitleSmall = document.querySelector('.hero-title-small');
+        const heroTitleLarge = document.querySelector('.hero-title-large');
+
+        splitText(heroTitleSmall);
+        splitText(heroTitleLarge);
+
+        // Animate letters
+        const smallLetters = heroTitleSmall.querySelectorAll('.gsap_split_letter');
+        const largeLetters = heroTitleLarge.querySelectorAll('.gsap_split_letter');
+
+        gsap.fromTo(smallLetters,
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.03,
+                ease: 'power3.out',
+                delay: 0.5
+            }
+        );
+
+        gsap.fromTo(largeLetters,
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.02,
+                ease: 'power3.out',
+                delay: 0.8
+            }
+        );
+
+        // Animate CTA button
+        gsap.fromTo('.hero-button',
+            {
+                y: 50,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: 'power3.out',
+                delay: 1.5
+            }
+        );
+
+        // Header fade in
+        gsap.fromTo('.header',
+            {
+                y: -50,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: 'power3.out',
+                delay: 0.3
+            }
+        );
+
+        // Parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            gsap.to('.hero-bg-image.active', {
+                x: mouseX * 30,
+                y: mouseY * 30,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        });
+    </script>
 </body>
 </html>

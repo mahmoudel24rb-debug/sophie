@@ -1,25 +1,28 @@
 # Sophie Lerooy - Portfolio Artistique
 
-Portfolio d'artiste sculpteur avec expertise en design organique et art contemporain.
+Portfolio minimaliste d'artiste sculpteur avec expertise en design organique et art contemporain.
+
+**Design**: Une seule page Hero immersive basée sur le template Artivo Collection.
 
 ## Technologies
 
-- **HTML5** - Structure sémantique
-- **CSS3** - Styles et animations
-- **JavaScript (Vanilla)** - Animations et interactions
-- **Google Fonts** - Typographies (Cormorant Garamond, Taviraj)
+- **HTML5** - Un seul fichier standalone (tout inline)
+- **CSS3** - Styles Webflow + styles personnalisés inline
+- **GSAP 3.12** - Animations professionnelles (split text, parallax)
+- **Lenis** - Smooth scroll fluide
+- **Google Fonts** - Typographies (Lato, Cormorant Garamond, Inter, Grey Qo)
 - **Netlify** - Hébergement et déploiement continu
 
 ## Fonctionnalités
 
-- Hero section avec scroll sticky et 12 images en parallax
-- Animations scroll-driven personnalisées
-- Effet parallax basé sur la position de la souris
-- Navigation responsive avec menu hamburger animé
-- Galerie de 6 projets avec animations d'entrée
-- Design responsive (mobile, tablet, desktop)
-- Performance optimisée avec HTML statique
-- Images hébergées sur CDN Squarespace
+- **Hero fullscreen** avec rotation automatique des 12 sculptures (4s)
+- **Animations GSAP split text** - Chaque lettre apparaît individuellement
+- **Effet parallax** sur le mouvement de la souris
+- **Smooth scroll** avec Lenis
+- **Design ultra-minimaliste** - Une seule page, maximum d'impact
+- **Responsive** - Mobile, tablet, desktop
+- **Performance optimale** - Un seul fichier HTML, aucun build
+- **Images hébergées sur CDN Squarespace**
 
 ## Développement Local
 
@@ -46,12 +49,12 @@ Le site sera accessible sur `http://localhost:8000`
 
 ```
 sophie/
-├── index.html              # Page principale
-├── style.css               # Styles et animations CSS
-├── script.js               # Animations JavaScript
+├── index.html              # SEUL FICHIER - Page Hero complète (HTML + CSS + JS inline)
 ├── README.md               # Documentation
 └── netlify.toml            # Configuration Netlify
 ```
+
+**Architecture**: Un seul fichier HTML autonome contenant tout (structure, styles, scripts).
 
 ## Déploiement
 
@@ -74,42 +77,32 @@ Les 12 images du hero et les 6 images de la galerie sont hébergées sur le CDN 
 - RACHEL 1.jpg, Rachel.jpg, RACHEL 2.jpg
 - IMG_5290.jpg, IMG_5292.jpg, MIKA.jpg
 
-**Gallery Projects (6):**
-1. Sculpture Abstraite I
-2. Forme Organique
-3. Rachel
-4. Composition II
-5. Série Blanche
-6. Mika
+## Contenu
+
+**Une seule page Hero** présentant:
+- Texte principal: "Découvrir" (h2) + "L'Art Intemporel" (h1)
+- CTA: "Découvrir la Galerie" (lien email)
+- 12 sculptures en rotation automatique en arrière-plan
 
 ## Personnalisation
 
 ### Couleurs
 
-Les couleurs principales sont définies dans `style.css` via des variables CSS :
-
-```css
-:root {
-    --dark: #000000;           /* Fond sombre */
-    --light: #e5dfd5;          /* Texte clair */
-    --paragraphs: #e5dfd599;   /* Paragraphes */
-    --border: #e5dfd526;       /* Bordures */
-    --accent: #C4A77D;         /* Accent doré */
-}
-```
+Le design utilise un fond noir (#000) avec texte blanc et dégradé sombre pour la lisibilité.
 
 ### Typographies
 
-Le site utilise deux polices Google Fonts :
-- **Cormorant Garamond** - Titres et texte principal
-- **Taviraj** - Accents italiques
+Polices Google Fonts utilisées :
+- **Cormorant Garamond** - Titres Hero (élégant, sérif)
+- **Lato** - Éléments UI (moderne, sans-sérif)
 
 ## Performance
 
-- Site 100% statique (pas de build, pas de bundle)
-- Images optimisées via CDN Squarespace
-- Animations CSS et JavaScript vanilla (pas de bibliothèques lourdes)
-- Chargement ultra-rapide
+- **Un seul fichier HTML** (15KB) - Pas de requêtes multiples
+- **Site 100% statique** - Pas de build, pas de bundle
+- **Images optimisées** via CDN Squarespace
+- **Animations GSAP professionnelles** via CDN (mise en cache)
+- **Chargement instantané** - Architecture minimaliste
 
 ## License
 
