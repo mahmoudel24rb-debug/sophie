@@ -57,26 +57,26 @@ ul, ol {
   border: 33px solid #F6F4EF;
 }
 
-/* --- Bottom Bar (Logo + Nav) --- */
-.bottom-bar {
+/* --- Top Bar (Logo + Nav) --- */
+.top-bar {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 0 50px 35px 50px;
+  align-items: center;
+  padding: 35px 50px;
   pointer-events: none;
 }
 
-.bottom-bar a,
-.bottom-bar button {
+.top-bar a,
+.top-bar button {
   pointer-events: auto;
 }
 
-.bottom-bar__logo a {
+.top-bar__logo a {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -86,16 +86,16 @@ ul, ol {
   text-transform: uppercase;
 }
 
-.bottom-bar__logo a:hover {
+.top-bar__logo a:hover {
   opacity: 0.6;
 }
 
-.bottom-bar__nav {
+.top-bar__nav {
   display: flex;
   gap: 2.5em;
 }
 
-.bottom-bar__nav a {
+.top-bar__nav a {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 13px;
@@ -106,11 +106,11 @@ ul, ol {
   transition: opacity 0.2s ease;
 }
 
-.bottom-bar__nav a:hover {
+.top-bar__nav a:hover {
   opacity: 0.5;
 }
 
-.bottom-bar__nav a.is-active {
+.top-bar__nav a.is-active {
   font-weight: 400;
 }
 
@@ -214,18 +214,18 @@ body.menu-open {
   object-position: center center;
 }
 
-/* Light text on homepage for dark hero images */
-.page-home .bottom-bar__logo a,
-.page-home .bottom-bar__nav a {
+/* Homepage: transparent frame, light text over hero */
+.page-home .site-frame {
+  border-color: transparent;
+}
+
+.page-home .top-bar__logo a,
+.page-home .top-bar__nav a {
   color: #F6F4EF;
 }
 
 .page-home .mobile-menu-toggle span {
   background: #F6F4EF;
-}
-
-.page-home .site-frame {
-  border-color: transparent;
 }
 
 /* --- Page Content (interior pages) --- */
@@ -509,16 +509,16 @@ body.menu-open {
     border-width: 15px;
   }
 
-  .bottom-bar {
-    padding: 0 20px 20px 20px;
+  .top-bar {
+    padding: 20px;
   }
 
-  .bottom-bar__logo a {
+  .top-bar__logo a {
     font-size: 16px;
     letter-spacing: 0.12em;
   }
 
-  .bottom-bar__nav {
+  .top-bar__nav {
     display: none;
   }
 
@@ -555,11 +555,11 @@ body.menu-open {
     border-width: 25px;
   }
 
-  .bottom-bar {
-    padding: 0 35px 28px 35px;
+  .top-bar {
+    padding: 28px 35px;
   }
 
-  .bottom-bar__nav {
+  .top-bar__nav {
     display: none;
   }
 
@@ -574,7 +574,7 @@ body.menu-open {
 
 /* Desktop: 1024px+ */
 @media (min-width: 1024px) {
-  .bottom-bar__nav {
+  .top-bar__nav {
     display: flex;
   }
 

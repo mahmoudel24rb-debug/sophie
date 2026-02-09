@@ -10,7 +10,12 @@
       "Bash(git add:*)",
       "Bash(dir:*)",
       "Bash(findstr:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(python -c:*)",
+      "Bash(python3:*)",
+      "Bash(where:*)",
+      "Bash(node:*)",
+      "WebFetch(domain:www.chiharu-shiota.com)"
     ]
   }
 }
