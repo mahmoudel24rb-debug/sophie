@@ -467,7 +467,7 @@ body.menu-open {
 .split-layout {
   display: flex;
   gap: 60px;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 4em;
 }
 
