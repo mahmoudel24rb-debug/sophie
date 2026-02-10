@@ -498,6 +498,10 @@ body.menu-open {
   margin-bottom: 0;
 }
 
+.split-layout--reverse {
+  flex-direction: row-reverse;
+}
+
 /* --- Atelier --- */
 .atelier-image {
   width: 100%;
@@ -583,7 +587,8 @@ body.menu-open {
     font-size: 14px;
   }
 
-  .split-layout {
+  .split-layout,
+  .split-layout--reverse {
     flex-direction: column;
     gap: 2em;
   }
