@@ -474,8 +474,6 @@ body.menu-open {
 .split-layout__image {
   flex: 0 0 40%;
   max-width: 40%;
-  position: sticky;
-  top: 140px;
 }
 
 .split-layout__image img {
