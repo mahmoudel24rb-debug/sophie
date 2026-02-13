@@ -1,0 +1,69 @@
+/* ===========================================
+   PAGE ATELIER — CSS specifique
+   Split layout + galerie images
+   =========================================== */
+
+.split-layout {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 4em;
+}
+
+.split-layout__image {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.split-layout__image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.split-layout__text {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+.split-layout__text p {
+  margin-bottom: 1.5em;
+}
+
+.split-layout__text p:last-child {
+  margin-bottom: 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.atelier-image {
+  width: 100%;
+  margin: 3em 0;
+}
+
+.atelier-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .split-layout {
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .split-layout__image {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

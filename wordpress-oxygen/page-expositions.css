@@ -1,0 +1,43 @@
+/* ===========================================
+   PAGE EXPOSITIONS — CSS specifique
+   =========================================== */
+
+.expo-section {
+  margin-bottom: 4em;
+}
+
+.expo-section:last-child {
+  margin-bottom: 0;
+}
+
+.expo-list {
+  border-top: 1px solid rgba(58, 58, 58, 0.15);
+}
+
+.expo-item {
+  padding: 1.5em 0;
+  border-bottom: 1px solid rgba(58, 58, 58, 0.15);
+}
+
+.expo-item__name {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3em;
+}
+
+.expo-item__location {
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  color: #666;
+}
+
+.expo-item__date {
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  color: #888;
+  margin-top: 0.2em;
+}

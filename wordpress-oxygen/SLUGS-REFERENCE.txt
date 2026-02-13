@@ -1,0 +1,57 @@
+========================================
+LISTE DES SLUGS - WordPress
+========================================
+
+Pages a creer dans WordPress avec ces slugs :
+
+SLUG                        PAGE                    FICHIERS
+----                        ----                    --------
+/                           Accueil (Front Page)    page-accueil.html + page-accueil.css
+/oeuvres/                   OEuvres                 page-oeuvres.html + page-oeuvres.css
+/oeuvres/emergence/         Emergence               page-theme-emergence.html + page-theme.css
+/oeuvres/presence/          Presence                page-theme-presence.html + page-theme.css
+/oeuvres/revelation/        Revelation              page-theme-revelation.html + page-theme.css
+/oeuvres/interiorite/       Interiorite             page-theme-interiorite.html + page-theme.css
+/oeuvres/equilibre/         Equilibre               page-theme-equilibre.html + page-theme.css
+/demarche/                  Demarche                page-demarche.html + page-demarche.css
+/expositions/               Expositions             page-expositions.html + page-expositions.css
+/bio/                       Bio                     page-bio.html + page-bio.css
+/atelier/                   Atelier                 page-atelier.html + page-atelier.css
+/contact/                   Contact                 page-contact.html + page-contact.css
+
+
+CONFIGURATION WORDPRESS :
+=========================
+
+1. PAGES PARENTES :
+   - Creer d'abord la page "OEuvres" (slug: oeuvres)
+   - Puis creer les 5 sous-pages (emergence, presence, revelation, interiorite, equilibre)
+     en selectionnant "OEuvres" comme page parente
+   - Cela creera automatiquement les URLs /oeuvres/emergence/, etc.
+
+2. PAGE D'ACCUEIL :
+   - Aller dans Reglages > Lecture
+   - Choisir "Une page statique"
+   - Selectionner la page "Accueil" comme page d'accueil
+
+3. PERMALIENS :
+   - Aller dans Reglages > Permaliens
+   - Choisir "Nom de l'article" (/%postname%/)
+   - Cela garantit des URLs propres comme /oeuvres/, /bio/, etc.
+
+
+NAVIGATION (liens dans le header) :
+====================================
+Les 6 liens de la barre de navigation :
+
+  Oeuvres      ->  /oeuvres/
+  Demarche     ->  /demarche/
+  Expositions  ->  /expositions/
+  Bio          ->  /bio/
+  Atelier      ->  /atelier/
+  Contact      ->  /contact/
+
+Logo "SOPHIE LEROOY" -> / (accueil)
+
+
+TOTAL : 12 pages a creer dans WordPress
